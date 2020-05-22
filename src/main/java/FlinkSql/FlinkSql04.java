@@ -1,26 +1,32 @@
 package FlinkSql;
 
 
-import org.apache.flink.api.common.typeinfo.TypeInformation;
 import org.apache.flink.api.common.typeinfo.Types;
 import org.apache.flink.api.java.tuple.Tuple2;
 import org.apache.flink.streaming.api.datastream.DataStream;
-import org.apache.flink.streaming.api.datastream.DataStreamSource;
-import org.apache.flink.streaming.api.datastream.SingleOutputStreamOperator;
+import org.apache.flink.streaming.api.environment.StreamExecutionEnvironment;
 import org.apache.flink.streaming.api.functions.source.RichSourceFunction;
+import org.apache.flink.table.api.EnvironmentSettings;
 import org.apache.flink.table.api.Table;
+import org.apache.flink.table.api.java.StreamTableEnvironment;
 import org.apache.flink.types.Row;
 import udf.TestAggregateFunction;
 import udf.TestScalarFunc;
 import udf.TestTableAggregateFunction;
 import udf.TestTableFunction;
 
-import static util.FlinkConstant.env;
-import static util.FlinkConstant.tEnv;
 
 public class FlinkSql04 {
     public static void main(String[] args) throws Exception {
 
+        //构建StreamExecutionEnvironment
+        StreamExecutionEnvironment env = StreamExecutionEnvironment.getExecutionEnvironment();
+
+        //构建EnvironmentSettings 并指定Blink Planner
+        EnvironmentSettings bsSettings = EnvironmentSettings.newInstance().useBlinkPlanner().inStreamingMode().build();
+
+        //构建StreamTableEnvironment
+        StreamTableEnvironment tEnv = StreamTableEnvironment.create(env, bsSettings);
 
         DataStream<Row> source = env.addSource(new RichSourceFunction<Row>() {
 
