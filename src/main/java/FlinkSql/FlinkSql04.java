@@ -59,7 +59,6 @@ public class FlinkSql04 {
 
         DataStream<Row> ds2 = env.addSource(new RichSourceFunction<Row>() {
 
-
             @Override
             public void run(SourceContext<Row> ctx) throws Exception {
                     Row row = new Row(2);
@@ -161,7 +160,7 @@ public class FlinkSql04 {
 
         DataStream<Tuple2<Boolean, Row>> res4 = tEnv.toRetractStream(table5, Row.class);
 
-        res4.print().name("Aggregate Functions Print").setParallelism(1);
+        res4.print().name("Table Aggregate Functions Print").setParallelism(1);
 
         env.execute("test udf");
 
