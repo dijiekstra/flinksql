@@ -1,0 +1,21 @@
+{
+  "afterColumns":{
+    "created":"1589186680",
+    "extra":{
+      "canGiving":false
+    },
+    "parameter":[
+      1,
+      2,
+      3,
+      "4"
+    ]
+  },
+  "beforeColumns":null,
+  "tableVersion":{
+    "binlogFile":null,
+    "binlogPosition":0,
+    "version":0
+  },
+  "touchTime":1589186680591
+}
