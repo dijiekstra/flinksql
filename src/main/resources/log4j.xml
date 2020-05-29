@@ -10,7 +10,7 @@
         </layout>
         <!--过滤器设置输出的级别-->
         <filter class="org.apache.log4j.varia.LevelRangeFilter">
-            <param name="levelMin" value="info" />
+            <param name="levelMin" value="error" />
             <param name="levelMax" value="error" />
             <param name="AcceptOnMatch" value="true" />
         </filter>
