@@ -1,4 +1,4 @@
-package FlinkSql;
+package tutorial;
 
 
 import org.apache.flink.api.common.typeinfo.Types;

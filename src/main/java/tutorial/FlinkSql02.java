@@ -1,4 +1,4 @@
-package FlinkSql;
+package tutorial;
 
 import static util.FlinkConstant.*;
 
