@@ -58,7 +58,7 @@ public class RedisLookupFunction extends AsyncTableFunction<Row> {
         if (cache != null) {
 
             String value = cache.getIfPresent(key);
-            log.error("value in cache is null?:{}", value == null);
+            log.info("value in cache is null?:{}", value == null);
             if (value != null) {
                 future.complete(Collections.singletonList(Row.of(key, value)));
                 return;

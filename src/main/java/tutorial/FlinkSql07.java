@@ -12,6 +12,7 @@ import static util.FlinkConstant.*;
 
 public class FlinkSql07 {
 
+    //DDL语句
     public static final String REDIS_TABLE_DIM_DDL = "" +
             "CREATE TABLE redis_dim (\n" +
             "first String,\n" +
@@ -26,7 +27,7 @@ public class FlinkSql07 {
             ")";
 
     public static void main(String[] args) throws Exception {
-        env.setParallelism(1);
+
         DataStream<Row> ds = env.addSource(new RichParallelSourceFunction<Row>() {
 
             volatile boolean flag = true;
@@ -49,13 +50,17 @@ public class FlinkSql07 {
             }
         }).returns(Types.ROW(Types.INT, Types.STRING));
 
+        //注册redis维表
         tEnv.sqlUpdate(REDIS_TABLE_DIM_DDL);
 
+        //source注册成表
         tEnv.createTemporaryView("test", ds, "id,first,p.proctime");
 
+        //join语句
         Table table = tEnv.sqlQuery("select a.*,b.* from test a left join redis_dim FOR SYSTEM_TIME AS OF a.p AS b on a.first = b.first");
 
-        tEnv.toAppendStream(table, Row.class).print();
+        //输出
+        tEnv.toAppendStream(table, Row.class).print("FlinkSql07");
 
         env.execute("FlinkSql07");
 
