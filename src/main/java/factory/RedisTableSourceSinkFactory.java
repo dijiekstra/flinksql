@@ -42,14 +42,17 @@ public class RedisTableSourceSinkFactory implements
 
         TableSchema schema = TableSchemaUtils.getPhysicalSchema(descriptorProperties.getTableSchema(SCHEMA));
 
-        return RedisLookupTableSource.builder()
+        RedisLookupTableSource.Builder builder = RedisLookupTableSource.builder()
                 .setFieldNames(schema.getFieldNames())
                 .setFieldTypes(schema.getFieldTypes())
-                .setIp(properties.get(CONNECTOR_IP))
-                .setPort(Integer.parseInt(properties.get(CONNECTOR_PORT)))
-                .setCacheMaxSize(Long.parseLong(properties.get(CONNECTOR_LOOKUP_CACHE_MAX_ROWS)))
-                .setCacheExpireMs(Long.parseLong(properties.get(CONNECTOR_LOOKUP_CACHE_TTL)))
-                .build();
+                .setIp(descriptorProperties.getString(CONNECTOR_IP))
+                .setPort(Integer.parseInt(descriptorProperties.getString(CONNECTOR_PORT)));
+
+        descriptorProperties.getOptionalLong(CONNECTOR_LOOKUP_CACHE_MAX_ROWS).ifPresent(builder::setCacheMaxSize);
+        descriptorProperties.getOptionalLong(CONNECTOR_LOOKUP_CACHE_TTL).ifPresent(builder::setCacheExpireMs);
+
+
+        return builder.build();
     }
 
     //redis维表 需要参数值是这样的

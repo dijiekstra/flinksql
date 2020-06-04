@@ -99,7 +99,7 @@ public class RedisLookupFunction extends AsyncTableFunction<Row> {
 
         try {
             //初始化缓存大小
-            this.cache = cacheMaxSize == -1 || cacheExpireMs == -1 ? null : CacheBuilder.newBuilder()
+            this.cache = cacheMaxSize <= 0 || cacheExpireMs <= 0 ? null : CacheBuilder.newBuilder()
                     .expireAfterWrite(cacheExpireMs, TimeUnit.MILLISECONDS)
                     .maximumSize(cacheMaxSize)
                     .build();
