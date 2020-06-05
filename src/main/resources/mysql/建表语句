@@ -1,0 +1,9 @@
+这里是mysql的建表语句
+
+CREATE TABLE `user_behavior` (
+  `user_id` bigint(20) DEFAULT NULL,
+  `item_id` bigint(20) DEFAULT NULL,
+  `behavior` varchar(255) COLLATE utf8_bin DEFAULT NULL,
+  `category_id` bigint(20) DEFAULT NULL,
+  `ts` bigint(10) DEFAULT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;

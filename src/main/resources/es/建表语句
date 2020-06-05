@@ -1,0 +1,3 @@
+这里是es那边的index建表语句
+
+{"settings":{"number_of_shards":1,"number_of_replicas":1},"mappings":{"user":{"dynamic":"strict","properties":{"user_id":{"type":"bigint"},"item_id":{"type":"bigint"},"behavior":{"type":"string"},"category_id":{"type":"bigint"},"ts":{"type":"bigint"}}}}}
