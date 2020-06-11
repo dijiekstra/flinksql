@@ -1,0 +1,585 @@
+﻿{
+  "paragraphs": [
+    {
+      "text": "%md\n## 维表Join\n相关讲解可以到我的CSDN博客，[传送门](https://blog.csdn.net/weixin_47482194/article/details/106672613)\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T12:00:28+0800",
+      "config": {
+        "colWidth": 12,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "markdown",
+          "editOnDblClick": true,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/markdown",
+        "editorHide": true,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "HTML",
+            "data": "<div class=\"markdown-body\">\n<h2>维表Join</h2>\n<p>相关讲解可以到我的CSDN博客，<a href=\"https://blog.csdn.net/weixin_47482194/article/details/106672613\">传送门</a></p>\n\n</div>"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591847171588_180435801",
+      "id": "paragraph_1591847171588_180435801",
+      "dateCreated": "2020-06-11T11:46:11+0800",
+      "dateStarted": "2020-06-11T12:00:28+0800",
+      "dateFinished": "2020-06-11T12:00:28+0800",
+      "status": "FINISHED",
+      "focus": true,
+      "$$hashKey": "object:77869"
+    },
+    {
+      "text": "%flink.conf\r\n\r\n# 配置一下依赖包，这种方式会自动下载依赖\r\n\r\nflink.execution.packages\torg.apache.flink:flink-connector-kafka_2.11:1.10.0,org.apache.flink:flink-connector-kafka-base_2.11:1.10.0,org.apache.flink:flink-json:1.10.0,org.apache.flink:flink-jdbc_2.11:1.10.0\r\n\r\n\r\n# 大家千万注意，如果用的是org.apache.flink:flink-connector-kafka_2.11:1.10.0,org.apache.flink:flink-connector-kafka-base_2.11:1.10.0这2个包，那么kafka 那边的 version请写universal，否则你会发现莫名其妙的错误\r\n\r\n# 如果kafka版本低于0.11，请用org.apache.flink:link-connector-kafka-0.11_2.11 替换上面的kafka的包，kafka版本和scala版本也请替换成对应的版本，ddl语句中的version也同样如此\r\n\r\n\r\n# 下面会用到Mysql，如果大家已经在Flink的lib目录下放了Mysql的驱动包，那么配这么多的包就行\r\n# 否则的话，再加上mysql:mysql-connector-java:5.1.37这个包",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T12:01:04+0800",
+      "config": {
+        "colWidth": 4,
+        "fontSize": 10,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "text",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/text"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": []
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591760949639_1184174982",
+      "id": "paragraph_1591760949639_1184174982",
+      "dateCreated": "2020-06-10T11:49:09+0800",
+      "dateStarted": "2020-06-11T11:39:49+0800",
+      "dateFinished": "2020-06-11T11:39:49+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77870"
+    },
+    {
+      "text": "%flink.ssql\r\n\r\n-- File System Source DDL\r\nDROP TABLE IF EXISTS t1;\r\n\r\nCREATE TABLE t1 (\r\n user_id bigint,\r\n item_id bigint,\r\n category_id bigint,\r\n behavior varchar,\r\n ts bigint\r\n) WITH (\r\n  'connector.type' = 'filesystem',                \r\n  'connector.path' = 'hdfs:///test/UserBehavior.csv', \r\n  'format.type' = 'csv',                         \r\n  'format.field-delimiter' = ',' \r\n)    \r\n;\r\n\r\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T11:39:59+0800",
+      "config": {
+        "colWidth": 4,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": false
+        },
+        "editorMode": "ace/mode/sql",
+        "editorHide": false,
+        "tableHide": false
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table has been dropped.\nTable has been created.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591753975875_1059746472",
+      "id": "paragraph_1591753975875_1059746472",
+      "dateCreated": "2020-06-10T09:52:55+0800",
+      "dateStarted": "2020-06-11T10:14:38+0800",
+      "dateFinished": "2020-06-11T10:14:55+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77871"
+    },
+    {
+      "text": "%flink.ssql\n\n-- Kafka Sink DDL\nDROP TABLE IF EXISTS t2;\n\nCREATE TABLE t2 (\n    user_id BIGINT,\n    item_id BIGINT,\n    category_id BIGINT,\n    behavior STRING,\n    ts BIGINT\n    ) WITH (\n    'update-mode' = 'append',\n    'connector.type' = 'kafka', \n    'connector.version' = 'universal',  \n    'connector.topic' = 'zeppelin_01_test', -- 之前创建的topic \n    'connector.properties.zookeeper.connect' = '127.0.0.1:2181',\n    'connector.properties.bootstrap.servers' = '127.0.0.1:9092',\n    'format.type'='json'\n\n)\n\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T11:41:15+0800",
+      "config": {
+        "colWidth": 4,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "table": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table has been dropped.\nTable has been created.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591689523264_190368696",
+      "id": "paragraph_1591689523264_190368696",
+      "dateCreated": "2020-06-09T15:58:43+0800",
+      "dateStarted": "2020-06-11T11:41:15+0800",
+      "dateFinished": "2020-06-11T11:41:15+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77872"
+    },
+    {
+      "text": "%flink.ssql\n-- 将我们的数据写入kafka\n-- 这里之所以用了UNIX_TIMESTAMP()这个udf来代替我们原生的ts\n--是因为这个ts太老了，之后我们要做窗口计算的话，会一直没法输出数据的\n\ninsert into t2 select user_id,item_id,category_id,behavior,UNIX_TIMESTAMP() as ts from t1;",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T10:15:47+0800",
+      "config": {
+        "colWidth": 4,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "table": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "type": "update"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "ANGULAR",
+            "data": "<h1>Duration: {{duration}} seconds\n"
+          },
+          {
+            "type": "TEXT",
+            "data": "Insertion successfully.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {
+        "jobUrl": {
+          "propertyName": "jobUrl",
+          "label": "FLINK JOB",
+          "tooltip": "View in Flink web UI",
+          "group": "flink",
+          "values": [
+            {
+              "jobUrl": "http://qoffline098218:8081#/job/c2caec178c59dc13ea53c606761878d4",
+              "$$hashKey": "object:78351"
+            }
+          ],
+          "interpreterSettingId": "flink"
+        }
+      },
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591691746896_1365135154",
+      "id": "paragraph_1591691746896_1365135154",
+      "dateCreated": "2020-06-09T16:35:46+0800",
+      "dateStarted": "2020-06-11T10:15:47+0800",
+      "dateFinished": "2020-06-11T10:16:03+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77873"
+    },
+    {
+      "text": "%flink.ssql\n\n-- Kafka Source DDL\nDROP TABLE IF EXISTS t3;\nCREATE TABLE t3(\n    user_id BIGINT,\n    item_id BIGINT,\n    category_id BIGINT,\n    behavior STRING,\n    ts BIGINT,\n    r_t AS TO_TIMESTAMP(FROM_UNIXTIME(ts,'yyyy-MM-dd HH:mm:ss'),'yyyy-MM-dd HH:mm:ss'),-- 计算列，因为ts是bigint，没法作为水印，所以用UDF转成TimeStamp\n    WATERMARK FOR r_t AS r_t - INTERVAL '5' SECOND -- 指定水印生成方式\n)WITH (\n    'update-mode' = 'append',\n    'connector.type' = 'kafka',  \n    'connector.version' = 'universal',  \n    'connector.topic' = 'zeppelin_01_test',\n    'connector.properties.zookeeper.connect' = '127.0.0.1:2181',\n    'connector.properties.bootstrap.servers' = '127.0.0.1:9092',\n    'connector.properties.group.id' = 'zeppelin_01_test',\n    'connector.startup-mode' = 'latest-offset',\n    'format.type'='json'\n\n)\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T11:41:13+0800",
+      "config": {
+        "colWidth": 4,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table has been dropped.\nTable has been created.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591769764358_1176632915",
+      "id": "paragraph_1591769764358_1176632915",
+      "dateCreated": "2020-06-10T14:16:04+0800",
+      "dateStarted": "2020-06-11T11:41:13+0800",
+      "dateFinished": "2020-06-11T11:41:13+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77874"
+    },
+    {
+      "text": "%flink.ssql(type=update)\n\n\nselect * from t3\n\n\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T11:41:17+0800",
+      "config": {
+        "colWidth": 3,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "behavior": "string",
+                      "count_behavior": "string",
+                      "tumble_start": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            },
+            "helium": {}
+          },
+          "1": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {}
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                }
+              },
+              "commonSetting": {}
+            }
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "type": "update"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591770112937_1043452984",
+      "id": "paragraph_1591770112937_1043452984",
+      "dateCreated": "2020-06-10T14:21:52+0800",
+      "dateStarted": "2020-06-11T11:41:17+0800",
+      "dateFinished": "2020-06-11T11:42:30+0800",
+      "status": "ERROR",
+      "$$hashKey": "object:77875"
+    },
+    {
+      "text": "%flink.ssql\n\nDROP TABLE IF EXISTS dim_behavior;\n\nCREATE TABLE `dim_behavior` (\n  `id` int  ,\n  `en_behavior` varchar  ,\n  `zh_behavior` varchar  \n)WITH (\n  'connector.type' = 'jdbc', \n  'connector.url' = 'jdbc:mysql://127.0.0.1:3306/dijie_test', \n  'connector.table' = 'dim_behavior', \n  'connector.driver' = 'com.mysql.jdbc.Driver',  \n  'connector.username' = 'test', \n  'connector.password' = 'test' , \n  'connector.lookup.cache.max-rows' = '5000', \n  'connector.lookup.cache.ttl' = '10s' \n)\n",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T12:00:51+0800",
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {},
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "results": {
+        "code": "SUCCESS",
+        "msg": [
+          {
+            "type": "TEXT",
+            "data": "Table has been dropped.\nTable has been created.\n"
+          }
+        ]
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591776807422_556572719",
+      "id": "paragraph_1591776807422_556572719",
+      "dateCreated": "2020-06-10T16:13:27+0800",
+      "dateStarted": "2020-06-10T18:14:32+0800",
+      "dateFinished": "2020-06-10T18:14:32+0800",
+      "status": "FINISHED",
+      "$$hashKey": "object:77876"
+    },
+    {
+      "text": "\t\t%flink.ssql(type = update)\n\t\n\t\n\t\tselect \n\t\tzh_behavior,\n\t\tcount(distinct user_id) as cnt_distin_user,\n\t\ttumble_start(c.r_t,interval '10' second) as tumble_start\n\t\tfrom\n\t\t(\n\t\tselect b.*,a.* from (\n\t\t    select *,proctime() as p from t3\n\t\t    ) a \n\t\t    left join dim_behavior FOR SYSTEM_TIME AS OF a.p AS b \n\t\t    on a.behavior = b.en_behavior\n\t\t    where b.zh_behavior is not null\n\t\t) c group by c.zh_behavior,tumble(c.r_t,interval '10' second)",
+      "user": "anonymous",
+      "dateUpdated": "2020-06-11T10:43:31+0800",
+      "config": {
+        "colWidth": 6,
+        "fontSize": 9,
+        "enabled": true,
+        "results": {
+          "0": {
+            "graph": {
+              "mode": "table",
+              "height": 300,
+              "optionOpen": false,
+              "setting": {
+                "table": {
+                  "tableGridState": {},
+                  "tableColumnTypeState": {
+                    "names": {
+                      "zh_behavior": "string",
+                      "cnt_distin_user": "string",
+                      "tumble_start": "string"
+                    },
+                    "updated": false
+                  },
+                  "tableOptionSpecHash": "[{\"name\":\"useFilter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable filter for columns\"},{\"name\":\"showPagination\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable pagination for better navigation\"},{\"name\":\"showAggregationFooter\",\"valueType\":\"boolean\",\"defaultValue\":false,\"widget\":\"checkbox\",\"description\":\"Enable a footer for displaying aggregated values\"}]",
+                  "tableOptionValue": {
+                    "useFilter": false,
+                    "showPagination": false,
+                    "showAggregationFooter": false
+                  },
+                  "updated": false,
+                  "initialized": false
+                },
+                "multiBarChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                },
+                "stackedAreaChart": {
+                  "rotate": {
+                    "degree": "-45"
+                  },
+                  "xLabelStatus": "default"
+                }
+              },
+              "commonSetting": {},
+              "keys": [
+                {
+                  "name": "id",
+                  "index": 0,
+                  "aggr": "sum"
+                }
+              ],
+              "groups": [],
+              "values": [
+                {
+                  "name": "en_behavior",
+                  "index": 1,
+                  "aggr": "sum"
+                }
+              ]
+            },
+            "helium": {}
+          }
+        },
+        "editorSetting": {
+          "language": "sql",
+          "editOnDblClick": false,
+          "completionKey": "TAB",
+          "completionSupport": true
+        },
+        "editorMode": "ace/mode/sql",
+        "type": "update"
+      },
+      "settings": {
+        "params": {},
+        "forms": {}
+      },
+      "apps": [],
+      "runtimeInfos": {},
+      "progressUpdateIntervalMs": 500,
+      "jobName": "paragraph_1591782251545_1184317351",
+      "id": "paragraph_1591782251545_1184317351",
+      "dateCreated": "2020-06-10T17:44:11+0800",
+      "dateStarted": "2020-06-10T18:14:34+0800",
+      "dateFinished": "2020-06-10T18:15:07+0800",
+      "status": "ABORT",
+      "$$hashKey": "object:77877"
+    }
+  ],
+  "name": "Flink Sql 01——Dim Join",
+  "id": "2FBMGP9D5",
+  "defaultInterpreterGroup": "flink",
+  "version": "0.9.0-SNAPSHOT",
+  "noteParams": {},
+  "noteForms": {},
+  "angularObjects": {},
+  "config": {
+    "isZeppelinNotebookCronEnable": false,
+    "looknfeel": "default",
+    "personalizedMode": "false"
+  },
+  "info": {
+    "isRunning": false
+  },
+  "path": "/dijie/Flink Sql 01——Dim Join"
+}
