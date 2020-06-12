@@ -23,3 +23,4 @@ org.apache.flink.streaming.connectors.kafka.Kafka09TableSourceSinkFactory
 org.apache.flink.streaming.connectors.kafka.Kafka011TableSourceSinkFactory
 org.apache.flink.formats.json.JsonRowFormatFactory
 org.apache.flink.formats.csv.CsvRowFormatFactory
+org.apache.flink.api.java.io.jdbc.JDBCTableSourceSinkFactory
