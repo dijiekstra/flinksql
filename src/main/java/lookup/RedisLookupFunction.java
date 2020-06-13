@@ -122,7 +122,6 @@ public class RedisLookupFunction extends AsyncTableFunction<Row> {
     @Override
     public void close() throws Exception {
         cache.cleanUp();
-        asyncClient.shutdown(true);
         redisClient.shutdown();
         super.close();
     }
