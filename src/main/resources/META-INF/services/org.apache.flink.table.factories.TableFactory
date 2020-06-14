@@ -14,13 +14,3 @@
 # limitations under the License.
 
 factory.RedisTableSourceSinkFactory
-org.apache.flink.table.sources.CsvBatchTableSourceFactory
-org.apache.flink.table.sources.CsvAppendTableSourceFactory
-org.apache.flink.table.sinks.CsvBatchTableSinkFactory
-org.apache.flink.table.sinks.CsvAppendTableSinkFactory
-org.apache.flink.streaming.connectors.kafka.Kafka010TableSourceSinkFactory
-org.apache.flink.streaming.connectors.kafka.Kafka09TableSourceSinkFactory
-org.apache.flink.streaming.connectors.kafka.Kafka011TableSourceSinkFactory
-org.apache.flink.formats.json.JsonRowFormatFactory
-org.apache.flink.formats.csv.CsvRowFormatFactory
-org.apache.flink.api.java.io.jdbc.JDBCTableSourceSinkFactory

@@ -180,11 +180,11 @@
             <scope>provided</scope>
         </dependency>
 
-<!--        <dependency>-->
-<!--            <groupId>io.netty</groupId>-->
-<!--            <artifactId>netty-all</artifactId>-->
-<!--            <version>4.1.4.Final</version>-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>io.netty</groupId>-->
+        <!--            <artifactId>netty-all</artifactId>-->
+        <!--            <version>4.1.4.Final</version>-->
+        <!--        </dependency>-->
 
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-jdbc -->
         <dependency>
@@ -232,8 +232,13 @@
                                     <exclude>junit:junit</exclude>
                                 </excludes>
                             </artifactSet>
+                            <transformers>
+                                <transformer
+                                        implementation="org.apache.maven.plugins.shade.resource.ServicesResourceTransformer"/>
+                            </transformers>
 
                         </configuration>
+
                     </execution>
                 </executions>
             </plugin>
