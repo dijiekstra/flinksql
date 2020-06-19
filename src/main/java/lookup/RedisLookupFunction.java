@@ -121,8 +121,11 @@ public class RedisLookupFunction extends AsyncTableFunction<Row> {
     //扫尾工作，关闭连接
     @Override
     public void close() throws Exception {
-        cache.cleanUp();
-        redisClient.shutdown();
+        if (cache != null)
+            cache.cleanUp();
+        if (redisClient != null)
+            redisClient.shutdown();
+
         super.close();
     }
 
