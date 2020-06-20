@@ -21,8 +21,6 @@ package org.apache.flink.streaming.connectors.kafka;
 import org.apache.flink.api.common.serialization.DeserializationSchema;
 import org.apache.flink.api.common.serialization.SerializationSchema;
 import org.apache.flink.api.java.tuple.Tuple2;
-import org.apache.flink.streaming.connectors.kafka.KafkaTableSinkBase;
-import org.apache.flink.streaming.connectors.kafka.KafkaTableSourceBase;
 import org.apache.flink.streaming.connectors.kafka.config.StartupMode;
 import org.apache.flink.streaming.connectors.kafka.internals.KafkaTopicPartition;
 import org.apache.flink.streaming.connectors.kafka.partitioner.FlinkFixedPartitioner;
@@ -53,6 +51,8 @@ import static org.apache.flink.table.descriptors.StreamTableDescriptorValidator.
 /**
  * Factory for creating configured instances of {@link KafkaTableSourceBase}.
  */
+//edit by dijie
+//修改实现接口
 public abstract class KafkaTableSourceSinkFactoryBase implements
         StreamTableSourceFactory<Row>,
         StreamTableSinkFactory<Tuple2<Boolean, Row>> {
@@ -137,6 +137,7 @@ public abstract class KafkaTableSourceSinkFactoryBase implements
 			startupOptions.specificOffsets);
 	}
 
+	//接口变了，方法自然要变
 	@Override
 	public StreamTableSink<Tuple2<Boolean, Row>> createStreamTableSink(Map<String, String> properties) {
 		final DescriptorProperties descriptorProperties = getValidatedProperties(properties);

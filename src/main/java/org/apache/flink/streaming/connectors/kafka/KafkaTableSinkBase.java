@@ -47,6 +47,8 @@ import java.util.Properties;
  * <p>The version-specific Kafka consumers need to extend this class and
  * override {@link #createKafkaProducer(String, Properties, SerializationSchema, Optional)}}.
  */
+//edit by dijie
+//将实现的接口改成UpsertStreamTableSink
 @Internal
 public abstract class KafkaTableSinkBase implements UpsertStreamTableSink<Row> {
 
@@ -93,6 +95,8 @@ public abstract class KafkaTableSinkBase implements UpsertStreamTableSink<Row> {
 		SerializationSchema<Row> serializationSchema,
 		Optional<FlinkKafkaPartitioner<Row>> partitioner);
 
+
+	//因为修改了实现接口，所以对应的方法也要修改
 	@Override
 	public DataStreamSink<?> consumeDataStream(DataStream<Tuple2<Boolean, Row>> dataStream) {
 		final SinkFunction<Row> kafkaProducer = createKafkaProducer(
@@ -100,17 +104,22 @@ public abstract class KafkaTableSinkBase implements UpsertStreamTableSink<Row> {
 			properties,
 			serializationSchema,
 			partitioner);
+		//Tuple第一个字段是表示插入还是撤回，第二个字段使我们真正的数据
+		//当第一个字段为True时，插入数据，否则被过滤
 		return dataStream.filter(f->f.f0).map(f->f.f1)
 			.addSink(kafkaProducer)
 			.setParallelism(dataStream.getParallelism())
 			.name(TableConnectorUtils.generateRuntimeName(this.getClass(), getFieldNames()));
 	}
 
+
+	//因为修改了实现接口，所以对应的方法也要修改
 	@Override
 	public void emitDataStream(DataStream<Tuple2<Boolean, Row>> dataStream) {
 		consumeDataStream(dataStream);
 	}
 
+	//因为修改了实现接口，所以对应的方法也要修改
 	@Override
 	public TypeInformation<Tuple2<Boolean, Row>> getOutputType() {
 		return Types.TUPLE(Types.BOOLEAN,schema.toRowType());
@@ -126,16 +135,19 @@ public abstract class KafkaTableSinkBase implements UpsertStreamTableSink<Row> {
 		return schema.getFieldTypes();
 	}
 
+	//必须要有，否则会报错
 	@Override
 	public void setKeyFields(String[] keys) {
 
 	}
 
+	//必须要有，否则会报错
 	@Override
 	public void setIsAppendOnly(Boolean isAppendOnly) {
 
 	}
 
+	//必须要有，否则会报错
 	@Override
 	public TypeInformation<Row> getRecordType() {
 		return null;
@@ -159,7 +171,7 @@ public abstract class KafkaTableSinkBase implements UpsertStreamTableSink<Row> {
 		if (o == null || getClass() != o.getClass()) {
 			return false;
 		}
-		final org.apache.flink.streaming.connectors.kafka.KafkaTableSinkBase that = (org.apache.flink.streaming.connectors.kafka.KafkaTableSinkBase) o;
+		final KafkaTableSinkBase that = (KafkaTableSinkBase) o;
 		return Objects.equals(schema, that.schema) &&
 			Objects.equals(topic, that.topic) &&
 			Objects.equals(properties, that.properties) &&
