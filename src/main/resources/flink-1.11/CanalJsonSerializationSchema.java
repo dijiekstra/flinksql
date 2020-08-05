@@ -107,6 +107,7 @@ public class CanalJsonSerializationSchema implements SerializationSchema<RowData
 		// 而且感觉这样内存会炸，先试一下delete
 		// 2020年08月04日10:09:45 参考了一下https://help.aliyun.com/document_detail/65670.html?spm=a2c4g.11186623.6.859.6c507db5NcA7gg这个
 		// 感觉还是把insert和update after解析成 insert、别的解析成delete靠谱
+		// 2020年08月05日14:59:43 新思路，如果两条数据来的时间一样，那就认为是同一条数据，然后组合一起，下次再实现
 		StringData sd = null;
 		switch (rowKind) {
 			case DELETE:
