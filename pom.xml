@@ -156,7 +156,7 @@
         <dependency>
             <groupId>io.lettuce</groupId>
             <artifactId>lettuce-core</artifactId>
-            <version>5.1.8.RELEASE</version>
+            <version>6.5.1.RELEASE</version>
         </dependency>
 
         <!-- https://mvnrepository.com/artifact/org.apache.flink/flink-connector-elasticsearch6 -->
